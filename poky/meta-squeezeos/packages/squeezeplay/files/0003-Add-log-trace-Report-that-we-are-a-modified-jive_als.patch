@@ -1,0 +1,25 @@
+From 8250c9180b2b29689a8be8affdbda231d242a5e2 Mon Sep 17 00:00:00 2001
+From: Martin Williams <martinr.williams@gmail.com>
+Date: Sat, 11 Apr 2020 00:35:31 +0100
+Subject: [PATCH 3/3] Add log trace - Report that we are a modified jive_alsa
+
+---
+ src/squeezeplay/src/audio/decode/decode_alsa_backend.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/audio/decode/decode_alsa_backend.c b/src/audio/decode/decode_alsa_backend.c
+index 127efda4e..97cd5e723 100644
+--- a/src/audio/decode/decode_alsa_backend.c
++++ b/src/audio/decode/decode_alsa_backend.c
+@@ -1259,6 +1259,8 @@ int main(int argv, char **argc)
+ #ifdef HAVE_SYSLOG
+ 	openlog("squeezeplay", LOG_ODELAY | LOG_CONS, LOG_USER);
+ #endif
++	/* ### Baby bass drop-out ### */
++	LOG_INFO("This is a modified version of jive_alsa that mitigates against 'bass drop out'. Release version 11 April 2020.\n");
+ 
+ 	/* attach to shared memory buffer */
+ 	if (decode_alsa_shared_mem_attach() != 0) {
+-- 
+2.26.2
+

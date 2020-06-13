@@ -1,0 +1,29 @@
+From c7f782a749db833aa18535c27cc72f1b5fb3f878 Mon Sep 17 00:00:00 2001
+From: Martin Williams <martinr.williams@gmail.com>
+Date: Sat, 13 Jun 2020 17:17:59 +0100
+Subject: [PATCH] =?UTF-8?q?Append=20=E2=80=98we=20are=20patched=E2=80=99?=
+ =?UTF-8?q?=20report=20to=20command=20line=20synopsis=20message?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ src/squeezeplay/src/audio/decode/decode_alsa_backend.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/audio/decode/decode_alsa_backend.c b/src/audio/decode/decode_alsa_backend.c
+index 97cd5e723..9712859fa 100644
+--- a/src/audio/decode/decode_alsa_backend.c
++++ b/src/audio/decode/decode_alsa_backend.c
+@@ -1249,6 +1249,8 @@ int main(int argv, char **argc)
+ 
+ 	if (!state.playback_device || !state.buffer_time || !state.period_count || !state.flags) {
+ 		printf("Usage: %s [-v] -d <playback_device> [-c <capture_device>] -b <buffer_time> -p <period_count> -s <sample_size:24|16> -f <flags>\n", argc[0]);
++		/* ### Baby bass drop-out ### */
++		printf("Patched to mitigate against 'bass drop out'. Release 11 April 2020.\n");
+ 		exit(-1);
+ 	}
+ 
+-- 
+2.26.2
+
