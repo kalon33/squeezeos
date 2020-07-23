@@ -12,7 +12,11 @@ RDEPENDS += "liblua5.1-socket liblua5.1-json liblua5.1-zipfilter liblua5.1-loop 
 RDEPENDS += "freefont"
 
 SRC_URI = "${SQUEEZEPLAY_SCM};module=squeezeplay \
-	file://logconf.lua"
+	file://logconf.lua \
+	file://0001-Initialize-effects-resampler-while-pcm-closed.patch;patch=1 \
+	file://0002-Eliminate-bass-drop-out-by-disabling-XRUN-and-substi.patch;patch=1 \
+	file://0003-Add-log-trace-Report-that-we-are-a-modified-jive_als.patch;patch=1 \
+	file://0004-Append-we-are-patched-report-to-command-line-synopsi.patch;patch=1"
 
 S = "${WORKDIR}/squeezeplay"
 
